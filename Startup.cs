@@ -1,4 +1,5 @@
-﻿using WebExplorer.Core.Interfaces;
+﻿using Microsoft.AspNetCore.SpaServices.AngularCli;
+using WebExplorer.Core.Interfaces;
 using WebExplorer.Infrastructure;
 
 namespace WebExplorer
@@ -63,10 +64,10 @@ namespace WebExplorer
 
                 spa.Options.SourcePath = "ClientApp";
 
-                //if (env.IsDevelopment())
-                //{
-                //    spa.UseAngularCliServer(npmScript: "start");
-                //}
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
             });
         }
     }

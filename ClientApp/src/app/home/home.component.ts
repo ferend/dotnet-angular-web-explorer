@@ -1,5 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { catchError, tap } from "rxjs/operators";
+import { throwError } from "rxjs";
 
 @Component({
   selector: "app-home",
@@ -7,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent {
+
   public hackerNewsStories: HackerNewsStory[] = [];
 
   constructor(
@@ -17,16 +20,25 @@ export class HomeComponent {
   }
 
   get(searchTerm: string) {
+    console.log("**************" + this.baseUrl)
     this.http
       .get<HackerNewsStory[]>(
         `${this.baseUrl}hackernews?searchTerm=${searchTerm}`
       )
-      .subscribe(
-        result => {
+      .pipe(
+        tap(result => {
           this.hackerNewsStories = result;
-        },
-        error => console.error(error)
-      );
+        }),
+        catchError(error => {
+          if (error.status === 404) {
+            console.error('Resource not found:', error);
+          } else {
+            console.error('An error occurred:', error);
+          }
+          return throwError(error);
+        })
+      )
+      .subscribe();
   }
 
   search(event: KeyboardEvent) {

@@ -30,7 +30,7 @@ namespace WebExplorer.Controllers
                 var storiesResponse = response.Content.ReadAsStringAsync().Result;
                 var bestIds = JsonConvert.DeserializeObject<List<int>>(storiesResponse);
 
-                var tasks = bestIds!.Select(GetStoryAsync);
+                var tasks = bestIds.Select(GetStoryAsync);
                 stories = (await Task.WhenAll(tasks)).ToList();
 
                 if (!String.IsNullOrEmpty(searchTerm))
@@ -58,12 +58,7 @@ namespace WebExplorer.Controllers
                         story = JsonConvert.DeserializeObject<HackerNewsStory>(storyResponse);
                     }
 
-                    if(story != null) {
-                        return story;
-                    }
-#pragma warning disable CS8603 // Possible null reference return.
-                    return default;
-#pragma warning restore CS8603 // Possible null reference return.
+                    return story;
                 });
         }
     }
