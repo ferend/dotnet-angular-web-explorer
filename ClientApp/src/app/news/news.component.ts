@@ -44,7 +44,7 @@ export class NewsComponent {
 
   search(event: KeyboardEvent) {
     const searchTerm = (event.target as HTMLTextAreaElement).value;
-    this.isSearchFieldEmpty = searchTerm.trim() === ''; // Update the boolean based on the search field content
+    this.isSearchFieldEmpty = searchTerm.trim() === ''; 
     this.get(searchTerm);
   }
 
