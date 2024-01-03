@@ -14,10 +14,14 @@ namespace WebExplorer.Controllers
 
         private readonly IHackerNewsRepository _repo;
 
-        public HackerNewsController(IMemoryCache cache, IHackerNewsRepository repository)
+        private readonly ILogger<HackerNewsController> _logger;
+
+
+        public HackerNewsController(IMemoryCache cache, IHackerNewsRepository repository, ILogger<HackerNewsController> logger)
         {
             this._cache = cache;
             this._repo = repository;
+            _logger = logger;
         }
 
         public async Task<List<HackerNewsStory>> Index(string searchTerm)
@@ -44,6 +48,7 @@ namespace WebExplorer.Controllers
             return stories;
         }
 
+        [HttpGet("hackernews")]
         private async Task<HackerNewsStory> GetStoryAsync(int storyId)
         {
             return await _cache.GetOrCreateAsync<HackerNewsStory>(storyId,

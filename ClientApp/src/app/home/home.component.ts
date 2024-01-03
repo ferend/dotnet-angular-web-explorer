@@ -11,36 +11,54 @@ import { throwError } from "rxjs";
 export class HomeComponent {
 
   public hackerNewsStories: HackerNewsStory[] = [];
+  
+  private http: HttpClient;
+  private baseUrl: string;
 
-  constructor(
-    private http: HttpClient,
-    @Inject("BASE_URL") private baseUrl: string
-  ) {
-    this.get("");
+
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    this.http = http;
+    this.baseUrl = baseUrl;
+
+    http.get<HackerNewsStory[]>(baseUrl +'hackernews?searchTerm=',
+      {
+        headers: {
+          'Authorization': 'Bearer *token*',
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'cache-control': 'no-cache'
+        }
+      }).pipe(tap(result => {
+      this.hackerNewsStories = result;
+    }, error => console.error(error)));
   }
 
   get(searchTerm: string) {
-    console.log("**************" + this.baseUrl)
+    // Check if searchTerm is null or empty
+    if (!searchTerm) {
+      // Optionally handle or log the case where searchTerm is null or empty
+      console.warn('Search term is null or empty');
+      // You can choose to return here or handle it according to your requirements
+      return;
+    }
+
     this.http
-      .get<HackerNewsStory[]>(
-        `${this.baseUrl}hackernews?searchTerm=${searchTerm}`
-      )
+      .get<HackerNewsStory[]>(`${this.baseUrl}hackernews?searchTerm=${searchTerm}`, {
+        headers: {
+          'Authorization': 'Bearer *token*',
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'cache-control': 'no-cache'
+        }
+      })
       .pipe(
         tap(result => {
           this.hackerNewsStories = result;
         }),
         catchError(error => {
-          if (error.status === 404) {
-            console.error('Resource not found:', error);
-          } else {
-            console.error('An error occurred:', error);
-          }
           return throwError(error);
         })
       )
       .subscribe();
   }
-
   search(event: KeyboardEvent) {
     this.get((event.target as HTMLTextAreaElement).value);
   }
