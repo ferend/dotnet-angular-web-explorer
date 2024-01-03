@@ -11,10 +11,10 @@ import { HomeComponent } from "./home/home.component";
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AboutComponent } from "./about/about.component";
+import { NewsComponent } from "./news/news.component";
 
 @NgModule({
-  declarations: [AppComponent, NavMenuComponent, HomeComponent, AboutComponent],
+  declarations: [AppComponent, NavMenuComponent, HomeComponent, NewsComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
     HttpClientModule,
@@ -25,7 +25,7 @@ import { AboutComponent } from "./about/about.component";
 
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
-      { path: "about", component: AboutComponent }
+      { path: "NewsComponent", component: NewsComponent }
     ])
   ],
   providers: [],

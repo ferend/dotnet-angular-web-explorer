@@ -1,0 +1,26 @@
+.about-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+.about-content {
+  margin-top: 20px;
+}
+
+strong {
+  color: #007bff;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
