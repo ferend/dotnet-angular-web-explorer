@@ -2,6 +2,7 @@ import { Component, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { catchError, tap } from "rxjs/operators";
 import { throwError } from "rxjs";
+import { HackerNewsStory } from "./HackerNewsStory";
 
 @Component({
   selector: "app-home",
@@ -9,35 +10,16 @@ import { throwError } from "rxjs";
   styleUrls: ["./news.component.scss"]
 })
 export class NewsComponent {
-
   public hackerNewsStories: HackerNewsStory[] = [];
-  
-  private http: HttpClient;
-  private baseUrl: string;
+  public isSearchFieldEmpty: boolean = true; // Track whether the search field is empty
 
-
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.http = http;
-    this.baseUrl = baseUrl;
-
-    http.get<HackerNewsStory[]>(baseUrl +'hackernews?searchTerm=',
-      {
-        headers: {
-          'Authorization': 'Bearer *token*',
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'cache-control': 'no-cache'
-        }
-      }).pipe(tap(result => {
-      this.hackerNewsStories = result;
-    }, error => console.error(error)));
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+    this.get('');
   }
 
   get(searchTerm: string) {
-    // Check if searchTerm is null or empty
     if (!searchTerm) {
-      // Optionally handle or log the case where searchTerm is null or empty
       console.warn('Search term is null or empty');
-      // You can choose to return here or handle it according to your requirements
       return;
     }
 
@@ -59,8 +41,11 @@ export class NewsComponent {
       )
       .subscribe();
   }
+
   search(event: KeyboardEvent) {
-    this.get((event.target as HTMLTextAreaElement).value);
+    const searchTerm = (event.target as HTMLTextAreaElement).value;
+    this.isSearchFieldEmpty = searchTerm.trim() === ''; // Update the boolean based on the search field content
+    this.get(searchTerm);
   }
 
   open(url: string) {
@@ -68,8 +53,3 @@ export class NewsComponent {
   }
 }
 
-interface HackerNewsStory {
-  title: string;
-  by: string;
-  url: string;
-}

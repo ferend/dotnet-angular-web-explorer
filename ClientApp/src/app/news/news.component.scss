@@ -1,7 +1,45 @@
+/* Add these styles to your global styles (styles.css or styles.scss) */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+.loading-message {
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 mat-card {
   margin: 10px;
+  transition: background-color 0.3s ease;
 }
 
 mat-card:hover {
-  background-color: rgb(165, 253, 180);
+  background-color: #e6f7ff; /* Light blue background on hover */
+  cursor: pointer;
+}
+
+mat-card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+mat-card-subtitle {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Optional: Add a subtle box-shadow to the cards for a raised effect */
+mat-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

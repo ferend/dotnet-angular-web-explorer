@@ -1,12 +1,15 @@
+<!-- Update your HTML template with the following changes -->
 <h1>Hacker News Top Stories</h1>
 
-<p *ngIf="!hackerNewsStories"><em>Loading...</em></p>
+<p class="loading-message" *ngIf="!hackerNewsStories"><em>Loading...</em></p>
+
 <div *ngIf="hackerNewsStories">
   <form>
     <mat-form-field>
-      <input matInput placeholder="Search" (keyup)="search($event)">
+      <input matInput [placeholder]="isSearchFieldEmpty ? 'Search' : ''" (keyup)="search($event)">
     </mat-form-field>
   </form>
+
   <mat-card *ngFor="let story of hackerNewsStories" (click)="open(story.url)">
     <mat-card-content>
       <mat-card-title>{{ story.title }}</mat-card-title>
