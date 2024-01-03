@@ -14,7 +14,7 @@ export class NewsComponent {
   public isSearchFieldEmpty: boolean = true; // Track whether the search field is empty
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    this.get('');
+    this.get('a');
   }
 
   get(searchTerm: string) {

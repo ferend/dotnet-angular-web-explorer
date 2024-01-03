@@ -59,3 +59,23 @@ strong {
   margin-top: 10px;
   margin-bottom: 20px;
 }
+
+.weather-container {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e7f2ff;
+  border: 1px solid #b3daff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  animation: slideIn 1s ease-out;
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #007bff;
+}
+
+.weather-container p {
+  color: #333;
+  line-height: 1.6;
+}

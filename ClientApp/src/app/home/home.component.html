@@ -14,4 +14,10 @@
     </p>
     <hr class="custom-hr" />
   </div>
+  <div class="weather-container" *ngIf="weather">
+    <h2>Current Weather in {{ weather.name }}</h2>
+    <p>Temperature: {{ weather.main.temp }} °F</p>
+    <p>Weather: {{ weather.weather[0].description }}</p>
+  </div>
 </div>
+
