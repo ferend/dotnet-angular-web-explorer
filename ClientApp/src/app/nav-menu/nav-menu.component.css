@@ -1,19 +1,42 @@
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+/* Add this CSS to your existing stylesheet */
+
+.header {
+  background-color: #f8f9fa;
 }
 
-html {
-  font-size: 14px;
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+.logo {
+  max-width: 30px;
+  margin-right: 10px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-color: #007bff;
+}
+
+.navbar-nav .nav-link {
+  color: #343a40;
+}
+
+  .navbar-nav .nav-link:hover {
+    color: #007bff;
   }
+
+.link-active .nav-link {
+  color: #007bff;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+@media (max-width: 767px) {
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
 }
