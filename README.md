@@ -5,8 +5,8 @@
 ## Features
 
 - **Website Aggregation:** View a curated list of trending websites and their latest content.
-- **News Feed:** Stay updated with the latest news and discussions from various sources.
 - **User-Friendly Interface:** Enjoy a clean and intuitive design for seamless navigation.
+- Different code implementations like Dependency Injection and Component System
 
 ## Built with
 
