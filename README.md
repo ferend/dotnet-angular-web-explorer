@@ -8,6 +8,10 @@
 - **User-Friendly Interface:** Enjoy a clean and intuitive design for seamless navigation.
 - Different code implementations like Dependency Injection and Component System
 
+## Screenshots
+![ss2](https://github.com/ferend/dotnet-angular-web-explorer/assets/74188001/01cd7a63-a225-4238-b6bb-2c3a4977edeb)
+
+
 ## Built with
 
 * .Net Core v6.0
@@ -20,3 +24,5 @@
 ### Prerequisites
 
 Get the newest LTS node => [https://nodejs.org](https://nodejs.org)
+
+cd into project/ClientApp, and run 'npm run ng'
