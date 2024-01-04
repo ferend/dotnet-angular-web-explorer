@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-about',
   templateUrl: './home.component.html',
@@ -8,17 +9,18 @@ import { environment } from '../../environments/environment';
 })
 export class HomeComponent implements OnInit {
   weather: any;
+  cityName: string = ''; // Add this property
 
   constructor() { }
 
   ngOnInit() {
-    this.getWeather();
+    // Optionally, you can set a default city name here
+    // this.cityName = 'Istanbul';
   }
 
   getWeather() {
     const apiKey = environment.apiKey;
-    const city = 'Istanbul';
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&appid=${apiKey}`;
 
     axios.get(apiUrl)
       .then(response => {
@@ -28,10 +30,10 @@ export class HomeComponent implements OnInit {
         console.error('Error fetching weather:', error);
       });
   }
+
   // Add this method to your component
   getCurrentTime(): string {
     const currentTime = new Date();
     return currentTime.toLocaleTimeString();
   }
-
 }

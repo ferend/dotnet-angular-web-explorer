@@ -14,10 +14,20 @@
     </p>
     <hr class="custom-hr" />
   </div>
+  <div class="weather-input">
+    <label for="cityInput">Enter City:</label>
+    <input type="text" id="cityInput" [(ngModel)]="cityName" placeholder="E.g., Istanbul">
+    <button (click)="getWeather()">Get Weather</button>
+  </div>
+
   <div class="weather-container" *ngIf="weather">
     <h2>Current Weather in {{ weather.name }}</h2>
     <p>Temperature: {{ weather.main.temp }} °F</p>
     <p>Weather: {{ weather.weather[0].description }}</p>
   </div>
 </div>
+
+
+
+
 
