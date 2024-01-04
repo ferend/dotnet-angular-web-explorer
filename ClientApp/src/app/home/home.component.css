@@ -20,22 +20,22 @@
     opacity: 1;
   }
 }
-
 .about-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f0f8ff; /* Alice Blue */
+  border: 1px solid #4682b4; /* Steel Blue */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(70, 130, 180, 0.1);
   animation: fadeIn 1s ease-out;
 }
 
 h1 {
   font-size: 2.5em;
-  color: #007bff;
+  color: #1e90ff; /* Dodger Blue */
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .about-content {
@@ -46,36 +46,53 @@ h1 {
 p {
   color: #333;
   line-height: 1.6;
+  margin-bottom: 15px;
 }
 
 strong {
-  color: #007bff;
+  color: #1e90ff; /* Dodger Blue */
 }
 
 .custom-hr {
   border: 0;
   height: 1px;
-  background: #007bff;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  background: #1e90ff; /* Dodger Blue */
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.weather-input {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px;
 }
 
 .weather-container {
   margin-top: 20px;
-  padding: 10px;
-  background-color: #e7f2ff;
-  border: 1px solid #b3daff;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  padding: 15px;
+  background-color: #b0e0e6; /* Powder Blue */
+  border: 1px solid #87ceeb; /* Sky Blue */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(135, 206, 235, 0.2);
   animation: slideIn 1s ease-out;
 }
 
 h2 {
   font-size: 1.8em;
-  color: #007bff;
+  color: #1e90ff; /* Dodger Blue */
+  margin-bottom: 15px;
 }
 
 .weather-container p {
   color: #333;
   line-height: 1.6;
+  margin-bottom: 10px;
 }
